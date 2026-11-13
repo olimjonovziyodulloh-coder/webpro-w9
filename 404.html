@@ -3,64 +3,129 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0e0d0f">
   <meta name="description" content="Page not found — webpro-w9 by Olimjonov Ziyodulloh.">
   <meta name="robots" content="noindex">
   <title>404 — Page not found</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500&display=swap"></noscript>
+
   <style>
     :root {
-      --bg: #f4f7fc;
-      --card: #ffffff;
-      --text: #14213d;
-      --muted: #55627a;
-      --accent: #1d4ed8;
-      --line: #d7e0ef;
+      --bg: #0e0d0f;
+      --panel: #161416;
+      --line: #2e2729;
+      --crimson: #9c2b2b;
+      --crimson-deep: #5e1c1f;
+      --gold: #b8924f;
+      --gold-soft: #8d7240;
+      --gold-light: #d9b877;
+      --text: #e6e1db;
+      --muted: #8f8a86;
+      --blue: #2c4a86;
+      --web: #8fa0c4;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      font-family: "Inter", Arial, Helvetica, sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.65;
       min-height: 100vh;
       display: grid;
       place-items: center;
-      padding: 32px 20px;
+      padding: 48px 20px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background-image:
+        radial-gradient(ellipse at 80% 0%, rgba(156, 43, 43, 0.16), transparent 50%),
+        radial-gradient(ellipse at 10% 100%, rgba(44, 74, 134, 0.20), transparent 50%);
+    }
+
+    .web {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 320px;
+      height: 320px;
+      opacity: 0.14;
+      pointer-events: none;
+      z-index: 0;
     }
 
     main {
-      width: min(620px, 100%);
-      background: var(--card);
+      position: relative;
+      z-index: 1;
+      width: min(680px, 100%);
+      background: var(--panel);
       border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: clamp(28px, 5vw, 52px);
-      box-shadow: 0 18px 45px rgba(20, 33, 61, 0.10);
+      padding: clamp(28px, 5vw, 48px);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
       text-align: center;
+    }
+
+    main::before,
+    main::after {
+      content: "";
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border: 2px solid var(--gold-soft);
+      pointer-events: none;
+    }
+
+    main::before {
+      top: -1px;
+      left: -1px;
+      border-right: 0;
+      border-bottom: 0;
+    }
+
+    main::after {
+      bottom: -1px;
+      right: -1px;
+      border-left: 0;
+      border-top: 0;
     }
 
     .code {
       display: inline-block;
-      background: #e3ebff;
-      color: var(--accent);
-      border-radius: 999px;
-      padding: 4px 14px;
+      background: var(--crimson-deep);
+      border: 1px solid var(--crimson);
+      color: #ecd9c6;
+      padding: 5px 13px;
+      font-family: "Rajdhani", "Arial Narrow", Arial, sans-serif;
       font-size: 12px;
       font-weight: 700;
-      letter-spacing: 0.12em;
+      letter-spacing: 1.4px;
       text-transform: uppercase;
     }
 
     h1 {
-      margin-top: 18px;
-      font-size: clamp(2rem, 7vw, 3rem);
-      line-height: 1.08;
-      letter-spacing: -1.2px;
+      margin-top: 16px;
+      font-family: "Rajdhani", "Arial Narrow", Arial, sans-serif;
+      font-size: clamp(38px, 7vw, 56px);
+      line-height: 1.02;
+      letter-spacing: 0.5px;
+      color: #efe9e1;
     }
 
     p {
       margin-top: 14px;
-      color: var(--muted);
+      color: #a8a29b;
     }
 
     .actions {
@@ -74,11 +139,18 @@
     a {
       display: inline-block;
       padding: 11px 18px;
-      border-radius: 9px;
-      background: var(--accent);
-      color: #fff;
+      background: var(--gold);
+      border: 1px solid var(--gold);
+      color: #17120a;
       font-weight: 600;
       text-decoration: none;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+
+    a:hover {
+      background: var(--gold-light);
+      border-color: var(--gold-light);
+      color: #17120a;
     }
 
     a.ghost {
@@ -88,8 +160,13 @@
       font-weight: 500;
     }
 
+    a.ghost:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
     a:focus-visible {
-      outline: 3px solid #f59e0b;
+      outline: 2px solid var(--gold);
       outline-offset: 3px;
     }
 
@@ -98,9 +175,22 @@
       color: var(--muted);
       font-size: 13px;
     }
+
+    @media (max-width: 600px) {
+      body { padding: 28px 16px; }
+      .web { width: 200px; height: 200px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; }
+    }
   </style>
 </head>
 <body>
+  <svg class="web" viewBox="0 0 300 300" aria-hidden="true" focusable="false">
+    <path d="M0 0L300 0M0 0L290 78M0 0L260 150M0 0L212 212M0 0L150 260M0 0L78 290M0 0L0 300M55 0 Q47 6 53 14M53 14 Q44 18 48 27M48 27 Q38 29 39 39M39 39 Q29 38 28 48M28 48 Q18 44 14 53M14 53 Q6 47 0 55M110 0 Q94 12 106 28M106 28 Q87 36 95 55M95 55 Q75 58 78 78M78 78 Q58 75 55 95M55 95 Q36 87 28 106M28 106 Q12 94 0 110M165 0 Q141 19 159 43M159 43 Q131 54 143 82M143 82 Q113 86 117 117M117 117 Q86 113 83 143M83 143 Q54 131 43 159M43 159 Q19 141 0 165M220 0 Q188 25 213 57M213 57 Q175 72 191 110M191 110 Q150 115 156 156M156 156 Q115 150 110 191M110 191 Q72 175 57 213M57 213 Q25 188 0 220M275 0 Q234 31 266 71M266 71 Q218 91 238 137M238 137 Q188 144 194 194M194 194 Q144 188 138 238M138 238 Q91 218 71 266M71 266 Q31 234 0 275" fill="none" stroke="var(--web)" stroke-width="1.2"/>
+  </svg>
+
   <main>
     <span class="code">404</span>
     <h1>Oops — that page doesn't exist.</h1>
